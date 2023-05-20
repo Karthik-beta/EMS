@@ -3,11 +3,11 @@ from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    is_superuser = serializers.BooleanField(read_only=True)
+    # is_superuser = serializers.BooleanField(read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password', 'is_superuser']
+        fields = ['id', 'name', 'email', 'password', 'is_superuser']
         extra_kwargs = {'password':{'write_only':True}}
 
     def create(self, validated_data):

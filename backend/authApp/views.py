@@ -21,11 +21,11 @@ class RegisterView(APIView):
 
 
 class LoginView(APIView):
-    permission_classes = [IsAuthenticated] 
+    # permission_classes = [IsAuthenticated] 
 
     def post(self, request):
-        email = request.data['email']
-        password = request.data['password']
+        email = request.data.get('email')
+        password = request.data.get('password')
 
         user = authenticate(email=email, password=password)
 

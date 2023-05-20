@@ -1,0 +1,17 @@
+.search-bar {
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

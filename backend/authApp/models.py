@@ -7,7 +7,7 @@ class User(AbstractUser):
     email = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
     username = None
-    is_superuser_access = models.BooleanField(default=False)
+    # is_superuser_access = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
