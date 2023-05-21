@@ -9,6 +9,9 @@ import { SharedService } from 'src/app/shared.service';
 export class ShowEmpComponent implements OnInit {
   constructor(private service: SharedService) { }
 
+  authenticated: boolean= false; // Define 'authenticated' property
+  message: string='';
+
   EmployeeList: any[] = [];
   EmployeeListWithoutFilter: any[] = [];
 

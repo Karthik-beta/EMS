@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
         if (message === 'Logged in as superuser') {
           this.router.navigate(['/admin']);
         } else {
-          this.router.navigate(['/user']);
+          this.router.navigate(['/home']);
         }
       });
     }

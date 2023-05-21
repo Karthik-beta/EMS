@@ -9,6 +9,9 @@ import {SharedService} from 'src/app/shared.service';
 export class ShowComComponent implements OnInit{
   constructor(private service:SharedService) { }
 
+  authenticated: boolean= false; // Define 'authenticated' property
+  message: string='';
+
   CompanyList:any=[];
 
   ModalTitle:string="";
@@ -76,6 +79,7 @@ export class ShowComComponent implements OnInit{
              el.CompanyLocation.toString().toLowerCase().includes(searchText);
     });
   }
+
 
 
 

@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   form: FormGroup;
+  authenticated = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,5 +36,10 @@ export class SignupComponent implements OnInit {
   submit(): void {
     this.http.post('http://localhost:8000/api/register', this.form.getRawValue())
       .subscribe(() => this.router.navigate(['/login']));
+}
+
+logout(): void {
+  this.http.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
+    .subscribe(() => this.authenticated = false);
 }
 }
