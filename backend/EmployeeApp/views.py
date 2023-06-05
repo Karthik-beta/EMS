@@ -2,9 +2,12 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.request import Request
 
-from EmployeeApp.models import Departments, Employees, Companies, Designations, Locations
-from EmployeeApp.serializers import DepartmentSerializer, EmployeeSerializer, CompanySerializer, DesignationSerializer, LocationSerializer
+from EmployeeApp.models import Departments, Employees, Companies, Designations, Locations, Andon
+from EmployeeApp.serializers import DepartmentSerializer, EmployeeSerializer, CompanySerializer, DesignationSerializer, LocationSerializer, AndonSerializer
 
 
 
@@ -161,3 +164,32 @@ def locationApi(request, id=0):
 
 
 
+@csrf_exempt
+def andonapi(request, id=0):
+    if request.method == 'GET':
+        andons = Andon.objects.all()
+        andon_serializer = AndonSerializer(andons, many=True)
+        return JsonResponse(andon_serializer.data, safe=False)
+    
+    elif request.method == 'POST':
+        andon_data = JSONParser().parse(request)
+        andon_serializer = AndonSerializer(data=andon_data)
+        if andon_serializer.is_valid():
+            andon_serializer.save()
+            return JsonResponse("Added Successfully", safe=False)
+        return JsonResponse(andon_serializer.errors, status=400)
+
+    
+    elif request.method == 'PUT':
+        andon_data = JSONParser().parse(request)
+        andon = Andon.objects.get(AndonId=andon_data['AndonId'])
+        andon_serializer = AndonSerializer(andon, data=andon_data)
+        if andon_serializer.is_valid():
+            andon_serializer.save()
+            return JsonResponse("Updated Successfully", safe=False)
+        return JsonResponse(andon_serializer.errors, status=400)
+    
+    elif request.method == 'DELETE':
+        andon = Andon.objects.get(ticket=id)
+        andon.delete()
+        return JsonResponse("Deleted Successfully", safe=False)

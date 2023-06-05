@@ -1,4 +1,4 @@
-from django.urls import re_path
+from django.urls import re_path, path
 from EmployeeApp import views
 
 
@@ -18,5 +18,8 @@ urlpatterns = [
 
     re_path(r'^location/$', views.locationApi),
     re_path(r'^location/([0-9]+)$', views.locationApi),
+
+    re_path(r'^andon/$', views.andonapi),  
+    re_path(r'^andon/([0-9]+)$', views.andonapi),
 
 ]

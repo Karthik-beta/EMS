@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from EmployeeApp.models import Departments, Employees, Companies, Designations, Locations
+from EmployeeApp.models import Departments, Employees, Companies, Designations, Locations, Andon
 
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,3 +35,24 @@ class LocationSerializer(serializers.ModelSerializer):
         model = Locations
         fields = ('LocationId',
                   'LocationName')
+        
+
+
+
+
+
+class AndonSerializer(serializers.ModelSerializer):
+    andon_alerts = serializers.DateTimeField(allow_null=True, required=False)
+    andon_acknowledge = serializers.DateTimeField(allow_null=True, required=False)
+    andon_resolved = serializers.DateTimeField(allow_null=True, required=False)
+
+    class Meta:
+        model = Andon
+        fields = (
+                  'login',
+                  'ticket',
+                  'category',
+                  'sub_category',
+                  'andon_alerts',
+                  'andon_acknowledge',
+                  'andon_resolved') 

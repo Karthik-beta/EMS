@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
 
   submit(): void {
     this.http.post('http://localhost:8000/api/register', this.form.getRawValue())
-      .subscribe(() => this.router.navigate(['/login']));
+      .subscribe(() => this.router.navigate(['/admin']));
 }
 
 logout(): void {
