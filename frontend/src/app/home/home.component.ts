@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   subscription: Subscription = new Subscription();
+  authenticated = false;
 
   constructor(private http: HttpClient) {}
 
@@ -29,4 +30,9 @@ export class HomeComponent implements OnInit {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  logout(): void {
+    this.http.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
+      .subscribe(() => this.authenticated = false);
+}
 }

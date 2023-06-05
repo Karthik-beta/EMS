@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'authApp',
+    'corsheaders',
+    'EmployeeApp.apps.EmployeeappConfig'
 ]
 
 AUTH_USER_MODEL = 'authApp.User'

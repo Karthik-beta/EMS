@@ -15,3 +15,36 @@
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
+.container {
+  width: 95%;
+}
+
+.table-container {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  position: relative;
+}
+
+.button-container {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  padding: 10px;
+}
+
+.back-button-container {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  padding: 10px;
+}
+
+.search-bar {
+  margin-bottom: 10px;
+  margin-top: 40px; /* Adjust the margin-top value based on your layout */
+}
+
+.table {
+  width: 100%;
+}

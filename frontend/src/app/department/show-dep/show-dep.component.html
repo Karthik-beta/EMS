@@ -1,11 +1,54 @@
+<!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-4">
+  <div class="container-fluid">
+    <a routerLink="/admin" class="navbar-brand">
+      <img src="assets/images/Magnum.png" alt="" width="150" height="40">
+    </a>
+
+    <div>
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a routerLink="/admin" class="nav-link">Dashboard</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link">Andon Help</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+
+
+
+
+
+<div class="container mt-5" style="width: 95%;">
+  <div class="table-container">
+    <div class="button-container">
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary float-right m-2"
+<button type="button" class="btn btn-primary"
 data-toggle="modal" data-target="#exampleModal"
 (click)="addClick()"
 data-backdrop="static" data-keyboard="false"
 >
     Add Department
   </button>
+  </div>
+
+
+
+  <div class="back-button-container">
+    <button type="button" class="btn btn-primary" data-backdrop="static" data-keyboard="false">Back</button>
+  </div>
+
+
+
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -105,3 +148,5 @@ data-backdrop="static" data-keyboard="false"
         </tr>
     </tbody>
 </table>
+</div>
+</div>

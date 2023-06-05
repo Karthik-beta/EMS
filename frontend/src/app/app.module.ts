@@ -19,6 +19,7 @@ import { LocationComponent } from './location/location.component';
 import { AddEditLocComponent } from './location/add-edit-loc/add-edit-loc.component';
 import {SharedService} from './shared.service';
 
+
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ShowLocComponent } from './location/show-loc/show-loc.component';
@@ -27,6 +28,10 @@ import { SignupComponent } from './signup/signup.component';
 import { NavComponent } from './nav/nav.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
+import { AndonhelpComponent } from './andonhelp/andonhelp.component';
+import { ShowAndComponent } from './andonhelp/show-and/show-and.component';
+import { AddEditAndComponent } from './andonhelp/add-edit-and/add-edit-and.component';
+
 
 @NgModule({
   declarations: [
@@ -50,14 +55,17 @@ import { HomeComponent } from './home/home.component';
     SignupComponent,
     NavComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    AndonhelpComponent,
+    ShowAndComponent,
+    AddEditAndComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

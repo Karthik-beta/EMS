@@ -1,7 +1,36 @@
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-4">
+  <div class="container-fluid">
+    <a routerLink="/admin" class="navbar-brand">
+      <img src="assets/images/Magnum.png" alt="" width="150" height="40">
+    </a>
+
+    <div>
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a routerLink="/admin" class="nav-link">Dashboard</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link">Andon Help</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link" (click)="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
 <div class="container d-flex justify-content-center flex-wrap">
   <!-- Users card -->
   <div class="col-xl-6 col-lg-12 mb-4 mx-4">
-    <div class="card l-bg-blue-dark rounded">
+    <div class="card l-bg-cherry rounded">
       <div class="card-statistic-3 p-4">
         <div class="card-icon card-icon-large">
           <i class="fas fa-user-plus"></i>
@@ -20,7 +49,7 @@
 
 <div class="container d-flex justify-content-center">
   <div class="col-xl-3 col-lg-6 mb-4 mx-4">
-    <div class="card l-bg-blue-dark rounded">
+    <div class="card l-bg-orange rounded">
       <div class="card-statistic-3 p-4">
         <div class="card-icon card-icon-large">
           <i class="fas fa-users"></i>
@@ -54,7 +83,7 @@
     </div>
   </div>
   <div class="col-xl-3 col-lg-6 mb-4 mx-4">
-    <div class="card l-bg-blue-dark rounded">
+    <div class="card l-bg-green rounded">
       <div class="card-statistic-3 p-4">
         <div class="card-icon card-icon-large">
           <i class="fas fa-address-card"></i>
@@ -71,7 +100,7 @@
     </div>
   </div>
   <div class="col-xl-3 col-lg-6 mb-4 mx-4">
-    <div class="card l-bg-blue-dark rounded">
+    <div class="card l-bg-cyan rounded">
       <div class="card-statistic-3 p-4">
         <div class="card-icon card-icon-large">
           <i class="fas fa-briefcase"></i>
@@ -88,3 +117,5 @@
     </div>
   </div>
 </div>
+
+

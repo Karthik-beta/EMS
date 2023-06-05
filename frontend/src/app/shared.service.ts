@@ -118,6 +118,24 @@ readonly APIUrl = "http://127.0.0.1:8000/";
       return this.http.delete(this.APIUrl+'/location/'+id);
     }
 
+    getAndList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/andon/');
+    }
+
+    addAnd(val:any){
+      return this.http.post(this.APIUrl+'/andon/',val);
+    }
+
+    updateAnd(val:any){
+      return this.http.put(this.APIUrl+'/andon/',val);
+    }
+
+    deleteAnd(id: number){
+      return this.http.delete(this.APIUrl+'/andon/'+id);
+    }
+
+
+
 
     getAllDepartmentNames():Observable<any[]>{
       return this.http.get<any[]>(this.APIUrl+'/department/');
@@ -137,6 +155,10 @@ readonly APIUrl = "http://127.0.0.1:8000/";
 
     getAllLocationNames():Observable<any[]>{
       return this.http.get<any[]>(this.APIUrl+'/location/');
+    }
+
+    getAllAndonNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/andon/');
     }
 
 
