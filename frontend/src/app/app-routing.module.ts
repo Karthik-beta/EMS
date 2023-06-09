@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { AndonhelpComponent } from './andonhelp/andonhelp.component';
+import { AndonComponent } from './andon/andon.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
 {path: 'signup', component:SignupComponent},
 {path: 'admin', component:AdminComponent},
 {path: 'home', component:HomeComponent},
-{path: 'andon', component:AndonhelpComponent}
+{path: 'andon-help', component:AndonhelpComponent},
+{path: 'andon', component:AndonComponent}
 
 ];
 

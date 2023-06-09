@@ -11,7 +11,7 @@
         </li>
 
         <li class="nav-item">
-          <a routerLink="/" class="nav-link">Andon Help</a>
+          <a routerLink="/andon" class="nav-link">Andon Help</a>
         </li>
 
         <li class="nav-item">
@@ -29,7 +29,7 @@
 <div class="container mt-5" style="width: 100%;">
   <div class="table-container">
     <div class="button-container">
-  <!-- Button trigger modal -->
+<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary"
 data-toggle="modal" data-target="#exampleModal"
 (click)="addClick()"
@@ -68,36 +68,68 @@ data-backdrop="static" data-keyboard="false"
 
 
 
-
-
+<div class="container-fluid">
+<div class="table-responsive">
 <div class="search-bar">
     <input [(ngModel)]="searchText" class="form-control"
 (keyup)="filterData()" placeholder="Search">
 </div>
-<table class="table table-striped">
+<table class="table table-striped w-100">
     <thead>
         <tr>
             <th>Start M/C</th>
-            <th>Login</th>
             <th>Ticket</th>
+            <th>Login</th>
+            <th>Machine ID</th>
+
             <th>Category</th>
             <th>Sub-Category</th>
-            <th style="background-color: red;">Andon Alerts</th>
-            <th style="background-color: yellow;">Andon Acknowledge</th>
-            <th style="background-color: green;">Andon Resolved</th>
+            <th style="background-color: rgb(219, 130, 130);">Andon Alerts</th>
+            <th style="background-color: rgb(202, 202, 100);">Andon Acknowledge</th>
+            <th style="background-color: rgb(70, 126, 70);;">Andon Resolved</th>
+            <th style="background-color: gray">Total Time</th>
             <th>Options</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let dataItem of andonList">
           <td><img src="assets/images/power.png" alt="" width="40" height="40"></td>
-            <td>{{dataItem.login}}</td>
             <td>{{dataItem.ticket}}</td>
-            <td>{{dataItem.category}}</td>
+            <td>{{dataItem.login}}</td>
+            <td>{{dataItem.machineId}}</td>
+
+            <td><ng-container *ngIf="dataItem.category">
+              {{ dataItem.category }}
+            </ng-container>
+            <ng-container *ngIf="!dataItem.category">
+              <label class="col-sm-2 col-form-label mb-3">Category</label>
+              <div class="col-sm-10">
+                <select class="form-control" [(ngModel)]="category" placeholder="Select Options">
+                  <option>--Select--</option>
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                </select>
+              </div>
+            </ng-container></td>
             <td>{{dataItem.sub_category}}</td>
-            <td style="background-color: red; ">{{ convertToLocalTime(dataItem.andon_alerts) | date:'dd-MM-yyyy hh:mm:ss a' }}</td>
-            <td style="background-color: yellow;">{{ convertToLocalTime(dataItem.andon_acknowledge) | date:'dd-MM-yyyy hh:mm:ss a' }}</td>
-            <td style="background-color: green;">{{ convertToLocalTime(dataItem.andon_resolved) | date:'dd-MM-yyyy hh:mm:ss a' }}</td>
+            <!-- <td style="background-color: red; ">{{ convertToLocalTime(dataItem.andon_alerts) | date:'dd-MM-yyyy hh:mm:ss a' }}</td> -->
+            <td style="background-color: rgb(219, 130, 130); ">{{ dataItem.andon_alerts | date:'dd-MM-yyyy hh:mm:ss a' }}</td>
+            <!-- <td style="background-color: rgb(202, 202, 100);">{{ dataItem.andon_acknowledge | date:'dd-MM-yyyy hh:mm:ss a' }}</td> -->
+            <td style="background-color: rgb(202, 202, 100);"><div class="form-group">
+                <div class="input-group-append">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    [disabled]="andon_acknowledge"
+                    (click)="enterCurrentDateTime('andon_acknowledge')"
+                  >
+                    Set Current
+                  </button>
+              </div>
+            </div></td>
+            <td style="background-color: rgb(70, 126, 70);">{{ dataItem.andon_resolved | date:'dd-MM-yyyy hh:mm:ss a' }}</td>
+            <td style="background-color: gray;">{{ dataItem.total_time }}</td>
             <td>
                 <button type="button" class="btn btn-light mr-1"
                 data-toggle="modal" data-target="#exampleModal"
@@ -120,5 +152,7 @@ data-backdrop="static" data-keyboard="false"
         </tr>
     </tbody>
 </table>
+</div>
+</div>
 </div>
 </div>

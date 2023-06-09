@@ -13,8 +13,9 @@ export class AddEditAndComponent implements OnInit {
 
   constructor(private service:SharedService) { }
   @Input() andData:any;
-  and:any;
+  // and:any;
   login:string="";
+  machineId:string="";
   ticket:string="";
   category:string="";
   sub_category:string="";
@@ -34,15 +35,16 @@ export class AddEditAndComponent implements OnInit {
     this.service.getAllAndonNames().subscribe((data: any) => {
       this.AndonList = data;
 
-      if (this.and) {
-        this.login = this.and.login;
-        this.ticket = this.and.ticket;
-        this.category = this.and.category;
-        this.sub_category = this.and.sub_category;
-        this.andon_alerts = this.and.andon_alerts;
-        this.andon_acknowledge = this.and.andon_acknowledge;
-        this.andon_resolved = this.and.andon_resolved;
-      }
+
+        // this.login = this.and.login;
+        this.machineId = this.andData.machineId;
+        this.ticket = this.andData.ticket;
+        this.category = this.andData.category;
+        this.sub_category = this.andData.sub_category;
+        // this.andon_alerts = this.and.andon_alerts;
+        this.andon_acknowledge = this.andData.andon_acknowledge;
+        this.andon_resolved = this.andData.andon_resolved;
+
     });
   }
 
@@ -67,10 +69,11 @@ export class AddEditAndComponent implements OnInit {
   addTicket() {
     var val = {
       login:this.login,
+      machineId:this.machineId,
       ticket:this.ticket,
       category:this.category,
       sub_category:this.sub_category,
-      andon_alerts:this.andon_alerts,
+      andon_alerts:new Date().toISOString().slice(0, 16),
       andon_acknowledge:this.andon_acknowledge || null,
       andon_resolved:this.andon_resolved || null,
     };
@@ -85,6 +88,7 @@ export class AddEditAndComponent implements OnInit {
     updateTicket() {
     var val = {
       Login:this.login,
+      MachineId:this.machineId,
       Ticket:this.ticket,
       Category:this.category,
       Sub_Category:this.sub_category,

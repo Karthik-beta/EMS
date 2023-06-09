@@ -17,16 +17,16 @@ export class ShowAndComponent implements OnInit {
   isLoggedIn: boolean = false;
 
 
-  convertToLocalTime(utcDateTime: string): Date | string {
-    if (!utcDateTime) {
-      return ''; // Return empty string or any default value you prefer
-    }
+  // convertToLocalTime(utcDateTime: string): Date | string {
+  //   if (!utcDateTime) {
+  //     return ''; // Return empty string or any default value you prefer
+  //   }
 
-    const utcDate = new Date(utcDateTime);
-    const localTimezoneOffset = utcDate.getTimezoneOffset() * 60000; // Convert minutes to milliseconds
-    const localDate = new Date(utcDate.getTime() - localTimezoneOffset);
-    return localDate;
-  }
+  //   const utcDate = new Date(utcDateTime);
+  //   const localTimezoneOffset = utcDate.getTimezoneOffset() * 60000; // Convert minutes to milliseconds
+  //   const localDate = new Date(utcDate.getTime() - localTimezoneOffset);
+  //   return localDate;
+  // }
   constructor(private service: SharedService,
                 private http: HttpClient) { }
 
@@ -55,6 +55,7 @@ export class ShowAndComponent implements OnInit {
     this.and = {
       ticket: 1000,
       login: "",
+      machineId: "",
       category: "",
       sub_category: "",
       andon_alerts: "",
@@ -105,14 +106,115 @@ export class ShowAndComponent implements OnInit {
 
     this.andonList = this.andonListWithoutFilter.filter(function (el: any) {
       return (
-        (el.login && el.login.toLowerCase().includes(searchText)) ||
-        (el.ticket && el.ticket.toLowerCase().includes(searchText)) ||
+        (el.login && el.login.toString().toLowerCase().includes(searchText)) ||
+        (el.machineId && el.machineId.toString().toLowerCase().includes(searchText)) ||
+        (el.ticket && el.ticket.toString().toLowerCase().includes(searchText)) ||
         (el.category && el.category.toLowerCase().includes(searchText)) ||
         (el.sub_category && el.sub_category.toLowerCase().includes(searchText)) ||
-        (el.andon_alerts && el.andon_alerts.toLowerCase().includes(searchText)) ||
-        (el.andon_acknowledge && el.andon_acknowledge.toLowerCase().includes(searchText)) ||
-        (el.andon_resolved && el.andon_resolved.toLowerCase().includes(searchText))
+        (el.andon_alerts && el.andon_alerts.toString().toLowerCase().includes(searchText)) ||
+        (el.andon_acknowledge && el.andon_acknowledge.toString().toLowerCase().includes(searchText)) ||
+        (el.andon_resolved && el.andon_resolved.toString().toLowerCase().includes(searchText))
       );
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @Input() andData:any;
+  login:string="";
+  machineId:string="";
+  ticket:string="";
+  category:string="";
+  sub_category:string="";
+  andon_alerts:string="";
+  andon_acknowledge:string="";
+  andon_resolved:string="";
+
+
+  AndonList:any=[];
+
+
+
+
+  loadAndonList() {
+    this.service.getAllAndonNames().subscribe((data: any) => {
+      this.AndonList = data;
+
+      if (this.and) {
+        this.login = this.and.login;
+        this.machineId = this.and.machineId;
+        this.ticket = this.and.ticket;
+        this.category = this.and.category;
+        this.sub_category = this.and.sub_category;
+        this.andon_alerts = this.and.andon_alerts;
+        this.andon_acknowledge = this.and.andon_acknowledge;
+        this.andon_resolved = this.and.andon_resolved;
+      }
+    });
+  }
+
+  enterCurrentDateTime(field: string) {
+    const currentDateTime = new Date().toISOString().slice(0, 16);
+    switch (field) {
+      case 'andon_alerts':
+        this.andon_alerts = currentDateTime;
+        break;
+      case 'andon_acknowledge':
+        this.andon_acknowledge = currentDateTime;
+        break;
+      case 'andon_resolved':
+        this.andon_resolved = currentDateTime;
+        break;
+    }
+  }
+
+
+
+
+  addTicket() {
+    var val = {
+      login:this.login,
+      machineId:this.machineId,
+      ticket:this.ticket,
+      category:this.category,
+      sub_category:this.sub_category,
+      andon_alerts:this.andon_alerts,
+      andon_acknowledge:this.andon_acknowledge || null,
+      andon_resolved:this.andon_resolved || null,
+    };
+
+
+    this.service.addAnd(val).subscribe(res=>{
+      alert(res.toString());
+    });
+  }
+
+
+    updateTicket() {
+    var val = {
+      Login:this.login,
+      MachineId:this.machineId,
+      Ticket:this.ticket,
+      Category:this.category,
+      Sub_Category:this.sub_category,
+      Andon_alerts:this.andon_alerts,
+      Andon_acknowledge:this.andon_acknowledge || null,
+      Andon_resolved:this.andon_resolved || null,
+    };
+
+
+    this.service.updateAnd(val).subscribe((res:any)=>{
+      alert(res.toString());
     });
   }
 

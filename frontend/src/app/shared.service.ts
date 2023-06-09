@@ -13,9 +13,10 @@ readonly APIUrl = "http://127.0.0.1:8000/";
 
   constructor(private http:HttpClient) { }
 
-  authenticateUser(email: string, password: string): Observable<any> {
+  authenticateUser(email: string, name: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.APIUrl}/login/`, {
       email,
+      name,
       password
     });
   }

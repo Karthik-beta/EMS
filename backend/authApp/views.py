@@ -51,11 +51,13 @@ class LoginView(APIView):
         if user.is_superuser:
             response.data = {
                 'message': 'Logged in as superuser',
+                'name': user.name,
                 'jwt': token
             }
         else:
             response.data = {
                 'message': 'Logged in as regular user',
+                'name': user.name,
                 'jwt': token
             }
         
