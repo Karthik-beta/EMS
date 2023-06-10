@@ -31,6 +31,7 @@ import { HomeComponent } from './home/home.component';
 import { AndonhelpComponent } from './andonhelp/andonhelp.component';
 import { ShowAndComponent } from './andonhelp/show-and/show-and.component';
 import { AddEditAndComponent } from './andonhelp/add-edit-and/add-edit-and.component';
+import { AndonComponent } from './andon/andon.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { AddEditAndComponent } from './andonhelp/add-edit-and/add-edit-and.compo
     HomeComponent,
     AndonhelpComponent,
     ShowAndComponent,
-    AddEditAndComponent
+    AddEditAndComponent,
+    AndonComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@
           placeholder="Enter Employee Name">
       </div> -->
 
-      <label class="col-sm-2 col-form-label mb-3 ">Login</label>
+      <!-- <label class="col-sm-2 col-form-label mb-3 ">Login</label>
       <div class="col-sm-10">
          <select class="form-control" [(ngModel)]="login" >
              <option>--Select--</option>
@@ -16,13 +16,19 @@
              <option>B</option>
              <option>C</option>
          </select>
+      </div> -->
+
+      <label class="col-sm-2 col-form-label mb-3">Machine ID</label>
+      <div class="col-sm-10">
+          <input type="text" class="form-control" [(ngModel)]="machineId"
+          placeholder="Enter Machine ID">
       </div>
 
-      <label class="col-sm-2 col-form-label mb-3">Ticket</label>
+      <!-- <label class="col-sm-2 col-form-label mb-3">Ticket</label>
       <div class="col-sm-10">
           <input type="text" class="form-control" [(ngModel)]="ticket"
           placeholder="Enter Ticket Number">
-      </div>
+      </div> -->
 
       <label class="col-sm-2 col-form-label mb-3 ">Category</label>
       <div class="col-sm-10">
@@ -44,11 +50,11 @@
          </select>
       </div>
 
-      <label class="col-sm-2 col-form-label mb-3 " for="andonAlertsDateTime">Andon Alerts</label>
+      <!-- <label class="col-sm-2 col-form-label mb-3 " for="andonAlertsDateTime">Andon Alerts</label>
       <div class="col-sm-10">
       <input type="datetime-local" id="andonAlertsDateTime" [(ngModel)]="andon_alerts" name="andonAlertsDateTime">
       <button class="btn btn-secondary ml-2" (click)="enterCurrentDateTime('andon_alerts')">Set Current</button>
-      </div>
+      </div> -->
 
       <label class="col-sm-2 col-form-label mb-3 " for="andonAcknowledgeDateTime">Andon Acknowledge</label>
       <div class="col-sm-10">

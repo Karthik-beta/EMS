@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
 
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private loggedInUserName = new BehaviorSubject<string>(''); // Create a BehaviorSubject to store the loggedInUserName
 
   constructor() { }
 
@@ -14,13 +15,13 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-  login() {
-    this.loggedIn.next(true);
-  }
+ 
+
 
 
   logout() {
     this.loggedIn.next(false);
+    this.loggedInUserName.next('');
   }
 
 }

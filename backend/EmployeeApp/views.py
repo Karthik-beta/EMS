@@ -5,6 +5,7 @@ from django.http.response import JsonResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.request import Request
+from rest_framework.decorators import api_view
 
 from EmployeeApp.models import Departments, Employees, Companies, Designations, Locations, Andon
 from EmployeeApp.serializers import DepartmentSerializer, EmployeeSerializer, CompanySerializer, DesignationSerializer, LocationSerializer, AndonSerializer
@@ -168,12 +169,12 @@ def locationApi(request, id=0):
 def andonapi(request, id=0):
     if request.method == 'GET':
         andons = Andon.objects.all()
-        andon_serializer = AndonSerializer(andons, many=True)
+        andon_serializer = AndonSerializer(andons, many=True, context={'request': request})
         return JsonResponse(andon_serializer.data, safe=False)
     
     elif request.method == 'POST':
         andon_data = JSONParser().parse(request)
-        andon_serializer = AndonSerializer(data=andon_data)
+        andon_serializer = AndonSerializer(data=andon_data, context={'request': request})
         if andon_serializer.is_valid():
             andon_serializer.save()
             return JsonResponse("Added Successfully", safe=False)
@@ -183,7 +184,7 @@ def andonapi(request, id=0):
     elif request.method == 'PUT':
         andon_data = JSONParser().parse(request)
         andon = Andon.objects.get(AndonId=andon_data['AndonId'])
-        andon_serializer = AndonSerializer(andon, data=andon_data)
+        andon_serializer = AndonSerializer(andon, data=andon_data, context={'request': request})
         if andon_serializer.is_valid():
             andon_serializer.save()
             return JsonResponse("Updated Successfully", safe=False)
@@ -193,3 +194,34 @@ def andonapi(request, id=0):
         andon = Andon.objects.get(ticket=id)
         andon.delete()
         return JsonResponse("Deleted Successfully", safe=False)
+
+
+
+# @api_view(['GET', 'POST', 'PUT', 'DELETE'])
+# def andonapi(request, id=0):
+#     if request.method == 'GET':
+#         andons = Andon.objects.all()
+#         andon_serializer = AndonSerializer(andons, many=True, context={'request': request})
+#         return JsonResponse(andon_serializer.data, safe=False)
+    
+#     elif request.method == 'POST':
+#         andon_data = JSONParser().parse(request)
+#         andon_serializer = AndonSerializer(data=andon_data, context={'request': request})
+#         if andon_serializer.is_valid():
+#             andon_serializer.save()
+#             return JsonResponse("Added Successfully", safe=False)
+#         return JsonResponse(andon_serializer.errors, status=400)
+
+#     elif request.method == 'PUT':
+#         andon_data = JSONParser().parse(request)
+#         andon = Andon.objects.get(AndonId=andon_data['AndonId'])
+#         andon_serializer = AndonSerializer(andon, data=andon_data, context={'request': request})
+#         if andon_serializer.is_valid():
+#             andon_serializer.save()
+#             return JsonResponse("Updated Successfully", safe=False)
+#         return JsonResponse(andon_serializer.errors, status=400)
+    
+#     elif request.method == 'DELETE':
+#         andon = Andon.objects.get(ticket=id)
+#         andon.delete()
+#         return JsonResponse("Deleted Successfully", safe=False)
