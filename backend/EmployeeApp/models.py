@@ -32,8 +32,8 @@ class Locations(models.Model):
 
 
 class Andon(models.Model):
-    login = models.CharField(max_length=255)
-    machineId = models.CharField(max_length=255, default='default_value')
+    login = models.CharField(max_length=255, default='XYZ')
+    machineId = models.CharField(max_length=255)
     ticket = models.AutoField(primary_key=True)
     category = models.CharField(max_length=255)
     sub_category = models.CharField(max_length=255)
@@ -45,3 +45,5 @@ class Andon(models.Model):
     class Meta:
         db_table = 'andon'
 
+
+    

@@ -37,116 +37,7 @@ export class AndonComponent implements OnInit {
 
   categoryCompleted: boolean = false;
   subCategoryCompleted: boolean = false;
-  andonAlertCompleted: boolean = false;
-  andonAcknowledgeCompleted: boolean = false;
-
-  onCategoryChange(index: number) {
-    this.andonList[index].category = this.andonList[index].category;
-    this.categoryCompleted = true;
-    this.subCategoryCompleted = false;
-    this.andonAlertCompleted = false;
-    this.andonAcknowledgeCompleted = false;
-  }
-
-  onColumnChange(index: number): void {
-    const lastIndex = this.andonList.length - 1;
-    const lastItem = this.andonList[lastIndex];
-
-    if (
-      lastItem &&
-      lastItem.machineId &&
-      this.categoryCompleted &&
-      this.subCategoryCompleted &&
-      !this.andonAlertCompleted &&
-      !this.andonAcknowledgeCompleted
-    ) {
-      this.andonAlertCompleted = true;
-    } else if (
-      lastItem &&
-      lastItem.machineId &&
-      this.categoryCompleted &&
-      this.subCategoryCompleted &&
-      this.andonAlertCompleted &&
-      !this.andonAcknowledgeCompleted
-    ) {
-      this.andonAcknowledgeCompleted = true;
-    } else {
-      // Add an empty row to the list
-      this.andonList.push({});
-    }
-  }
-
-
-
-  // Track the current step in the data entry process
-  currentStep: string = 'machineId';
-
-  // Check if the current step is allowed to be filled
-  isStepAllowed(step: string): boolean {
-    const stepsOrder = [
-      'machineId',
-      'category',
-      'sub_category',
-      'andon_alerts',
-      'andon_acknowledge',
-      'andon_resolved'
-    ];
-
-    const currentIndex = stepsOrder.indexOf(step);
-    const previousSteps = stepsOrder.slice(0, currentIndex);
-    const isPreviousStepCompleted = previousSteps.every(
-      step => this.isStepCompleted(step)
-    );
-
-    return isPreviousStepCompleted;
-  }
-
-  // Check if a step has been completed
-  isStepCompleted(step: string): boolean {
-    return this.andonList.some(item => !!item[step]);
-  }
-
-  // Handle the change event of the input fields
-  onInputChange(step: string, index: number) {
-    if (this.isStepAllowed(step)) {
-      this.setCurrentStep(step, index);
-    } else {
-      // Clear the input value if the step is not allowed
-      this.andonList[index][step] = '';
-    }
-  }
-
-  // Set the current step and update the state accordingly
-  setCurrentStep(step: string, index: number) {
-    this.currentStep = step;
-    this.updateStepStatus(step, index);
-  }
-
-  // Update the status of a step (completed or not completed)
-  updateStepStatus(step: string, index: number) {
-    const isCompleted = !!this.andonList[index][step];
-
-    switch (step) {
-      case 'machineId':
-        this.categoryCompleted = isCompleted;
-        this.subCategoryCompleted = false;
-        this.andonAlertCompleted = false;
-        this.andonAcknowledgeCompleted = false;
-        break;
-      case 'category':
-        this.subCategoryCompleted = isCompleted;
-        this.andonAlertCompleted = false;
-        this.andonAcknowledgeCompleted = false;
-        break;
-      case 'sub_category':
-        this.andonAlertCompleted = isCompleted;
-        this.andonAcknowledgeCompleted = false;
-        break;
-      case 'andon_alerts':
-        this.andonAcknowledgeCompleted = isCompleted;
-        break;
-    }
-  }
+  selectedCategory: string="";
 
 
 
@@ -169,28 +60,90 @@ export class AndonComponent implements OnInit {
   }
 
 
+
+  currentTime: Date = new Date();
+
   ngOnInit(): void {
     this.refreshAndList();
-    Emitters.authEmitter.subscribe(
-      (auth: boolean) => {
+    Emitters.authEmitter.subscribe((auth: boolean) => {
         this.authenticated = auth;
       }
     );
-    this.andonList.forEach(() => {
-      this.totalBreakdownTime.push(0); // Initialize totalBreakdownTime for each row with 0
-    });
+    this.getCurrentTime();
+    setInterval(() => {
+      this.getCurrentTime();
+    }, 1000);
   }
+
+
+
+
+
+
+  getCurrentTime(): void {
+    this.currentTime = new Date();
+  }
+
+
+  // refreshAndList() {
+  //   this.service.getAndList().subscribe(data => {
+  //     this.andonList = data.map((item: any) => ({
+  //       ...item,
+  //       category: '',
+  //     }));
+  //     this.andonListWithoutFilter = this.andonList;
+  //     this.filterData();
+  //   });
+  // }
+
+
 
   refreshAndList() {
     this.service.getAndList().subscribe(data => {
-      this.andonList = data.map((item: any) => ({
-        ...item,
-        category: '',
-      }));
-      this.andonListWithoutFilter = this.andonList;
+      this.andonList = data;
+      this.andonListWithoutFilter = data;
       this.filterData();
     });
   }
+
+
+
+
+  readonly APIUrl = "http://127.0.0.1:8000/";
+
+
+
+  addAnd() {
+    if (this.machineId && this.category && this.sub_category) {
+
+
+      const newAnd = {
+        machineId: this.machineId,
+        category: this.category,
+        sub_category: this.sub_category,
+        andon_alerts: new Date().toISOString().slice(0, 16)
+      };
+
+      this.service.addAnd(newAnd).subscribe(() => {
+        // Set andonAlertCompleted to true
+        this.andonAlertCompleted = true;
+
+        // Set andonAlertTimestamp to the current timestamp
+        this.andonAlertTimestamp = new Date();
+
+        // Handle success or any additional actions
+        console.log('Andon data added successfully:', newAnd);
+      });
+    } else {
+      console.log('Please select all required fields before submitting.');
+    }
+  }
+
+
+
+
+
+
 
   filterData() {
     var searchText = this.searchText.toLowerCase();
@@ -210,159 +163,62 @@ export class AndonComponent implements OnInit {
   }
 
 
-  totalBreakdownTime: number[] = [];
-
-  startTotalBreakdownTimer(index: number) {
-    setInterval(() => {
-      if (this.andonAlertsToggled[index] && !this.andonResolvedToggled[index]) {
-        this.totalBreakdownTime[index]++; // Increment the totalBreakdownTime
-      }
-    }, 1000);
-  }
-
-
-andonAlertsToggled: boolean[] = [];
-andonAlertsClickTime: Date[] = [];
-
-toggleAndonAlert(index: number) {
-  this.andonAlertsToggled[index] = !this.andonAlertsToggled[index];
-  if (this.andonAlertsToggled[index]) {
-    // Record the current time
-    this.andonAlertsClickTime[index] = new Date();
-
-    // Start the total breakdown timer
-    this.totalBreakdownTime[index] = 0; // Initialize the totalBreakdownTime
-    this.startTotalBreakdownTimer(index);
-  }
-}
-
-
-getAndonAlertText(index: number) {
-  if (this.andonAlertsToggled[index]) {
-    // Display the recorded click time
-    return this.andonAlertsClickTime[index]?.toLocaleString() || '';
-  } else {
-    // Display "Raise alert"
-    return "Raise alert";
-  }
-}
-
-andonAcknowledgeToggled: boolean[] = [];
-andonAcknowledgeClickTime: Date[] = [];
-
-toggleAndonAcknowledge(index: number) {
-  this.andonAcknowledgeToggled[index] = !this.andonAcknowledgeToggled[index];
-  if (this.andonAcknowledgeToggled[index]) {
-    // Record the current time
-    this.andonAcknowledgeClickTime[index] = new Date();
-  }
-}
-
-getAndonAcknowledgeText(index: number) {
-  if (this.andonAcknowledgeToggled[index]) {
-    // Display the recorded click time
-    return this.andonAcknowledgeClickTime[index]?.toLocaleString() || '';
-  } else {
-    // Display "Acknowledge"
-    return "Acknowledge";
-  }
-}
-
-andonResolvedToggled: boolean[] = [];
-andonResolvedClickTime: Date[] = [];
-
-toggleAndonResolved(index: number) {
-  this.andonResolvedToggled[index] = !this.andonResolvedToggled[index];
-  if (this.andonResolvedToggled[index]) {
-    // Record the current time
-    this.andonResolvedClickTime[index] = new Date();
-
-    // Stop the total breakdown timer
-    clearInterval(this.totalBreakdownTime[index]);
-  }
-}
-
-
-getAndonResolvedText(index: number) {
-  if (this.andonResolvedToggled[index]) {
-    // Display the recorded click time
-    return this.andonResolvedClickTime[index]?.toLocaleString() || '';
-  } else {
-    // Display "Resolve"
-    return "Resolve";
-  }
-}
-
-
-formatTotalBreakdownTime(time: number): string {
-  if (time === undefined || isNaN(time)) {
-    return '00:00'; // Display "00:00" when time is undefined or NaN
-  }
-
-  const hours = Math.floor(time / 3600);
-  const minutes = Math.floor((time % 3600) / 60);
-  const formattedTime = `${this.padZero(hours)}:${this.padZero(minutes)}`;
-  return formattedTime;
-}
-
-padZero(num: number): string {
-  return num.toString().padStart(2, '0');
-}
 
 
 
-  enterCurrentDateTime(field: string, index: number) {
-    const currentDateTime = new Date().toISOString().slice(0, 16);
-    const andonItem = this.andonList[index];
 
-    switch (field) {
-      case 'andon_alerts':
-        if (andonItem.andon_alerts) {
-          andonItem.andon_alerts = '';
-        } else {
-          andonItem.andon_alerts = currentDateTime;
-        }
-        break;
-      case 'andon_acknowledge':
-        if (andonItem.andon_acknowledge) {
-          andonItem.andon_acknowledge = '';
-        } else {
-          andonItem.andon_acknowledge = currentDateTime;
-        }
-        break;
-      case 'andon_resolved':
-        if (andonItem.andon_resolved) {
-          andonItem.andon_resolved = '';
-        } else {
-          andonItem.andon_resolved = currentDateTime;
-        }
-        break;
-    }
-  }
 
-  addAnd() {
-    const newAnd = {
-      login: this.login,
-      machineId: this.machineId,
-      ticket: this.ticket,
-      category: this.category,
-      sub_category: this.sub_category,
-      andon_alerts: this.andon_alerts,
-      andon_acknowledge: this.andon_acknowledge,
-      andon_resolved: this.andon_resolved
-    };
 
-    this.service.addAnd(newAnd).subscribe(() => {
-      // Handle success or any additional actions
-    });
-  }
 
-  updateAnd() {
-    const updatedAnd = { /* construct the updated And object */ };
-    this.service.updateAnd(updatedAnd).subscribe(() => {
-      // Handle success or any additional actions
-    });
-  }
+
+
+  // enterCurrentDateTime(field: string, index: number) {
+  //   const currentDateTime = new Date().toISOString().slice(0, 16);
+  //   const andonItem = this.andonList[index];
+
+  //   switch (field) {
+  //     case 'andon_alerts':
+  //       if (andonItem.andon_alerts) {
+  //         andonItem.andon_alerts = '';
+  //       } else {
+  //         andonItem.andon_alerts = currentDateTime;
+  //       }
+  //       break;
+  //     case 'andon_acknowledge':
+  //       if (andonItem.andon_acknowledge) {
+  //         andonItem.andon_acknowledge = '';
+  //       } else {
+  //         andonItem.andon_acknowledge = currentDateTime;
+  //       }
+  //       break;
+  //     case 'andon_resolved':
+  //       if (andonItem.andon_resolved) {
+  //         andonItem.andon_resolved = '';
+  //       } else {
+  //         andonItem.andon_resolved = currentDateTime;
+  //       }
+  //       break;
+  //   }
+  // }
+
+  // addAnd() {
+  //   const newAnd = {
+  //     login: this.login,
+  //     machineId: this.machineId,
+  //     ticket: this.ticket,
+  //     category: this.category,
+  //     sub_category: this.sub_category,
+  //     andon_alerts: this.andon_alerts,
+  //     andon_acknowledge: this.andon_acknowledge,
+  //     andon_resolved: this.andon_resolved
+  //   };
+
+  //   this.service.addAnd(newAnd).subscribe(() => {
+  //     // Handle success or any additional actions
+  //   });
+  // }
+
+
 
   deleteAnd(id: number) {
     this.service.deleteAnd(id).subscribe(() => {
@@ -375,4 +231,131 @@ padZero(num: number): string {
       // Handle the response containing all Andon names
     });
   }
+
+
+
+
+    andonAlertCompleted = false;
+    andonAcknowledgeCompleted = false;
+    andonResolvedCompleted = false;
+    andonAlertTimestamp: Date | null = null;
+    andonAcknowledgeTimestamp: Date | null = null;
+    andonResolvedTimestamp: Date | null = null;
+
+    onAndonAlert(): void {
+      this.andonAlertCompleted = true;
+      this.andonAlertTimestamp = new Date();
+      this.alertStartTime = new Date();
+      this.startTimer();
+    }
+
+    onAndonAcknowledge(): void {
+      this.andonAcknowledgeCompleted = true;
+      this.andonAcknowledgeTimestamp = new Date();
+    }
+
+    onAndonResolved(): void {
+      this.andonResolvedCompleted = true;
+      this.andonResolvedTimestamp = new Date();
+      this.stopTimer();
+    }
+
+    getFormattedTimestamp(timestamp: Date | null): string {
+      if (!timestamp) {
+        return '';
+      }
+
+      return timestamp.toLocaleString();
+    }
+
+
+    alertStartTime: Date | null = null;
+    timerInterval: any;
+    counter: string = '00:00';
+
+    startTimer(): void {
+      this.timerInterval = setInterval(() => {
+        const currentTime = new Date().getTime();
+        const startTime = this.alertStartTime?.getTime() || 0;
+        const elapsedMilliseconds = currentTime - startTime;
+        this.counter = this.formatTotalBreakdownTime(Math.floor(elapsedMilliseconds / 1000));
+      }, 1000);
+    }
+
+    stopTimer(): void {
+      clearInterval(this.timerInterval);
+      this.counter = '00:00';
+    }
+
+
+    formatTotalBreakdownTime(time: number): string {
+      const hours = Math.floor(time / 3600);
+      const minutes = Math.floor((time % 3600) / 60);
+      const seconds = time % 60;
+      const formattedTime = `${this.padZero(hours)}:${this.padZero(minutes)}:${this.padZero(seconds)}`;
+      return formattedTime;
+    }
+
+    padZero(num: number): string {
+      return num.toString().padStart(2, '0');
+    }
+
+    calculateTotalMinutes(andonList: any[]): number {
+      let totalMinutes = 0;
+      for (const dataItem of andonList) {
+        const timeParts = dataItem.total_time.split(':');
+        const hours = parseInt(timeParts[0], 10);
+        const minutes = parseInt(timeParts[1], 10);
+        const timeInMinutes = hours * 60 + minutes;
+        totalMinutes += timeInMinutes;
+      }
+      return totalMinutes;
+    }
+
+
+    calculateTotalMechanicalMinutes(andonList: any[]): number {
+      let totalMechanicalMinutes = 0;
+      for (const dataItem of andonList) {
+        if (dataItem.category === 'Mechanical') {
+          const timeParts = dataItem.total_time.split(':');
+          const hours = parseInt(timeParts[0], 10);
+          const minutes = parseInt(timeParts[1], 10);
+          const timeInMinutes = hours * 60 + minutes;
+          totalMechanicalMinutes += timeInMinutes;
+        }
+      }
+      return totalMechanicalMinutes;
+    }
+
+
+    calculateTotalElectricalMinutes(andonList: any[]): number {
+      let totalElectricalMinutes = 0;
+      for (const dataItem of andonList) {
+        if (dataItem.category === 'Electrical') {
+          const timeParts = dataItem.total_time.split(':');
+          const hours = parseInt(timeParts[0], 10);
+          const minutes = parseInt(timeParts[1], 10);
+          const timeInMinutes = hours * 60 + minutes;
+          totalElectricalMinutes += timeInMinutes;
+        }
+      }
+      return totalElectricalMinutes;
+    }
+
+
+    calculateTotalOthersMinutes(andonList: any[]): number {
+      let totalOthersMinutes = 0;
+      for (const dataItem of andonList) {
+        if (dataItem.category === 'Others') {
+          const timeParts = dataItem.total_time.split(':');
+          const hours = parseInt(timeParts[0], 10);
+          const minutes = parseInt(timeParts[1], 10);
+          const timeInMinutes = hours * 60 + minutes;
+          totalOthersMinutes += timeInMinutes;
+        }
+      }
+      return totalOthersMinutes;
+    }
+
+
 }

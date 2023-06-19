@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,16 @@ import { AndonhelpComponent } from './andonhelp/andonhelp.component';
 import { ShowAndComponent } from './andonhelp/show-and/show-and.component';
 import { AddEditAndComponent } from './andonhelp/add-edit-and/add-edit-and.component';
 import { AndonComponent } from './andon/andon.component';
+import { Andon2Component } from './andon2/andon2.component';
+import { Andon3Component } from './andon3/andon3.component';
+import { ShowAnd3Component } from './andon3/show-and3/show-and3.component';
+import { AddEditAnd3Component } from './andon3/add-edit-and3/add-edit-and3.component';
+import { AlertComponent } from './alert/alert.component';
+import { BreakdownComponent } from './breakdown/breakdown.component';
+import { CategorywiseComponent } from './categorywise/categorywise.component';
+import { AnalysislineComponent } from './analysisline/analysisline.component';
+import { OeeanalysisComponent } from './oeeanalysis/oeeanalysis.component';
+import { Alert2Component } from './alert2/alert2.component';
 
 
 @NgModule({
@@ -60,7 +71,17 @@ import { AndonComponent } from './andon/andon.component';
     AndonhelpComponent,
     ShowAndComponent,
     AddEditAndComponent,
-    AndonComponent
+    AndonComponent,
+    Andon2Component,
+    Andon3Component,
+    ShowAnd3Component,
+    AddEditAnd3Component,
+    AlertComponent,
+    BreakdownComponent,
+    CategorywiseComponent,
+    AnalysislineComponent,
+    OeeanalysisComponent,
+    Alert2Component
   ],
   imports: [
     BrowserModule,
@@ -68,6 +89,7 @@ import { AndonComponent } from './andon/andon.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    CanvasJSAngularChartsModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

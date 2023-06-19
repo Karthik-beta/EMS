@@ -1,0 +1,639 @@
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-2">
+  <div class="container-fluid">
+    <a routerLink="/admin" class="navbar-brand">
+      <img src="assets/images/Magnum.png" alt="" width="150" height="40">
+    </a>
+
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <li class="nav-item">
+        <a routerLink="/admin" class="nav-link">Dashboard</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="/andon" class="nav-link">Andon Call Help</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="/alert" class="nav-link"><i class="fa-solid fa-bell"></i></a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a routerLink="/login" class="nav-link">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Plant</p>
+                <div>
+                  <select class="form-control custom-select" placeholder="Select Options">
+                    <option value="" disabled selected>- All -</option>
+                    <option>Chennai</option>
+                    <option>Pune</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Shopfloor</p>
+                <div>
+                  <select class="form-control custom-select" placeholder="Select Options">
+                    <option value="" disabled selected>- All -</option>
+                    <option>Piston</option>
+                    <option>Axle</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+        <div class="dash-card shadow rounded">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Assembly Line</p>
+              <div>
+                <select class="form-control custom-select" placeholder="Select Options">
+                  <option value="" disabled selected>- All -</option>
+                  <option>Line 1</option>
+                  <option>Line 2</option>
+                </select>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Machine</p>
+                <div>
+                  <select class="form-control custom-select" placeholder="Select Options">
+                    <option value="" disabled selected>- All -</option>
+                    <option>Machine 1</option>
+                    <option>Machine 2</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">B D Category</p>
+                <select class="form-control custom-select" placeholder="Select Options">
+                  <option value="" disabled selected>- All -</option>
+                  <option>Mechanical</option>
+                  <option>Electrical</option>
+                </select>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Open Alert</p>
+                <div><h1>0</h1></div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Closed Alert</p>
+                <div><h1>0</h1></div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="container-fluid mt-3 container-1 shadow rounded">
+  <div class="row">
+    <div class="col-md-12 text-center mt-2">
+      <h4>CATEGORY : QUALITY</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="scrollable-cards">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+            <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+            <p class="card-text">Machine ID : 4353</p>
+            <p class="card-text">Status : Active</p>
+            <p class="card-text">Alert : June 16, 2023, 01:03:34</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-gray">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 6454</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 01:48:12</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 5433</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:14:59</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:26:37</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-biege">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 02:51:23</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:15:42</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2354</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:38:06</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:57:18</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container-fluid mt-3 container-1 shadow rounded">
+  <div class="row">
+    <div class="col-md-12 text-center mt-2">
+      <h4>CATEGORY : ENGINEERING</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="scrollable-cards">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+            <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+            <p class="card-text">Machine ID : 4353</p>
+            <p class="card-text">Status : Active</p>
+            <p class="card-text">Alert : June 16, 2023, 01:03:34</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-gray">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 6454</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 01:48:12</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 5433</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:14:59</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:26:37</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-biege">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 02:51:23</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:15:42</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2354</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:38:06</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:57:18</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container-fluid mt-3 container-1 shadow rounded">
+  <div class="row">
+    <div class="col-md-12 text-center mt-2">
+      <h4>CATEGORY : RESETTING</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="scrollable-cards">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+            <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+            <p class="card-text">Machine ID : 4353</p>
+            <p class="card-text">Status : Active</p>
+            <p class="card-text">Alert : June 16, 2023, 01:03:34</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-gray">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 6454</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 01:48:12</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 5433</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:14:59</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:26:37</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-biege">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 02:51:23</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:15:42</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2354</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:38:06</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:57:18</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container-fluid mt-3 container-1 shadow rounded">
+  <div class="row">
+    <div class="col-md-12 text-center mt-2">
+      <h4>CATEGORY : ELECT MAINT</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="scrollable-cards">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+            <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+            <p class="card-text">Machine ID : 4353</p>
+            <p class="card-text">Status : Active</p>
+            <p class="card-text">Alert : June 16, 2023, 01:03:34</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-gray">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 6454</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 01:48:12</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 5433</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:14:59</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:26:37</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-biege">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 02:51:23</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:15:42</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2354</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:38:06</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:57:18</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container-fluid mt-3 container-1 shadow rounded">
+  <div class="row">
+    <div class="col-md-12 text-center mt-2">
+      <h4>CATEGORY : MECH MAINT</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="scrollable-cards">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+            <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+            <p class="card-text">Machine ID : 4353</p>
+            <p class="card-text">Status : Active</p>
+            <p class="card-text">Alert : June 16, 2023, 01:03:34</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-gray">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 6454</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 01:48:12</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 5433</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:14:59</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:26:37</p>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-biege">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Acknowledge</p>
+              <p class="card-text">Alert : June 16, 2023, 02:51:23</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2345</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:15:42</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-slateblue">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 2354</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 02:38:06</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-bell"></i></h5>
+            <div class="card-content-honeydew">
+              <p class="card-text" style="font-weight: bolder;">Shopfloor : Piston</p>
+              <p class="card-text">Machine ID : 3532</p>
+              <p class="card-text">Status : Active</p>
+              <p class="card-text">Alert : June 16, 2023, 01:57:18</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

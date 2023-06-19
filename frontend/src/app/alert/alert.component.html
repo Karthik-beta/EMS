@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm mb-2">
+  <div class="container-fluid">
+    <a routerLink="/admin" class="navbar-brand">
+      <img src="assets/images/Magnum.png" alt="" width="150" height="40">
+    </a>
+
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <li class="nav-item">
+        <a routerLink="/admin" class="nav-link">Dashboard</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="/andon" class="nav-link">Andon Call Help</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="/alert" class="nav-link"><i class="fa-solid fa-bell"></i></a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a routerLink="/login" class="nav-link">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>Ticket</th>
+          <th>Login</th>
+          <th>Machine Id</th>
+          <th>Category</th>
+          <th>Sub Category</th>
+          <th>Andon Alert</th>
+          <th>Andon Acknowledge</th>
+          <th>Andon Resolved</th>
+          <th>Total Breakdown</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let dataItem of andonList">
+          <td>{{dataItem.ticket}}</td>
+          <td>XYZ</td>
+          <td>{{dataItem.machineId}}</td>
+          <td>{{dataItem.category}}</td>
+          <td>{{dataItem.sub_category}}</td>
+          <td>{{dataItem.andon_alerts | date:'MMM d, yyyy h:mm a'}}</td>
+          <td>{{dataItem.andon_acknowledge | date:'MMM d, yyyy h:mm a'}}</td>
+          <td>{{dataItem.andon_resolved | date:'MMM d, yyyy h:mm a'}}</td>
+          <td>{{dataItem.total_time}}</td>
+      </tr>
+  </tbody>
+</table>

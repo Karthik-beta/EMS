@@ -12,6 +12,14 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { AndonhelpComponent } from './andonhelp/andonhelp.component';
 import { AndonComponent } from './andon/andon.component';
+import { Andon2Component } from './andon2/andon2.component';
+import { Andon3Component } from './andon3/andon3.component';
+import { AlertComponent } from './alert/alert.component';
+import { BreakdownComponent } from './breakdown/breakdown.component';
+import { CategorywiseComponent } from './categorywise/categorywise.component';
+import { AnalysislineComponent } from './analysisline/analysisline.component';
+import { OeeanalysisComponent } from './oeeanalysis/oeeanalysis.component';
+import { Alert2Component } from './alert2/alert2.component';
 
 
 const routes: Routes = [
@@ -26,12 +34,20 @@ const routes: Routes = [
 {path: 'admin', component:AdminComponent},
 {path: 'home', component:HomeComponent},
 {path: 'andon-help', component:AndonhelpComponent},
-{path: 'andon', component:AndonComponent}
-
+{path: 'andon', component:AndonComponent},
+{path: 'andon2', component:Andon2Component},
+{path: 'andon3', component:Andon3Component},
+{path: 'alert', component: AlertComponent},
+{path: 'breakdown', component: BreakdownComponent},
+{path: 'categorywise', component: CategorywiseComponent},
+{path: 'line', component: AnalysislineComponent},
+{path: 'oee', component: OeeanalysisComponent},
+{path: 'alert2', component: Alert2Component},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+
 })
 export class AppRoutingModule { }

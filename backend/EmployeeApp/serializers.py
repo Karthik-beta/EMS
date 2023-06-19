@@ -80,8 +80,8 @@ class AndonSerializer(serializers.ModelSerializer):
 
         return "00:00"
     
-    def create(self, validated_data):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            validated_data['login'] = user.name
-        return super().create(validated_data)
+    # def create(self, validated_data):
+    #     user = self.context['request'].user
+    #     if user.is_authenticated:
+    #         validated_data['login'] = user.name
+    #     return super().create(validated_data)

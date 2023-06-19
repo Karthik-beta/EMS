@@ -73,29 +73,7 @@
   padding-top: 15px;
 } */
 
-.table-container {
-  display: table;
-  width: 100%;
-}
 
-.table-header {
-  display: table-row;
-  font-weight: bold;
-  background-color: #f1f1f1;
-}
-
-.table-row {
-  display: table-row;
-}
-
-.table-cell {
-  display: table-cell;
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: center;
-  vertical-align: middle;
-  /* border-radius: 10px; */
-}
 
 .machine-id,
 .category,
@@ -252,6 +230,28 @@
   border-radius: 3px;
 }
 
+/* .search-bar input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.search-bar input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+} */
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+}
+
 .search-bar input {
   padding: 10px;
   border: 1px solid #ccc;
@@ -264,12 +264,10 @@
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.progress {
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.add-ticket-button {
+  margin-left: 10px;
 }
+
 
 .progress-bar-green {
   background-color: green;
@@ -315,6 +313,7 @@
   align-items: center;
   justify-content: center;
 }
+
 
 .scale {
   display: flex;
@@ -364,6 +363,12 @@
   background-color: purple;
 }
 
+.progress {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .siren-icon-left {
   position: absolute;
@@ -389,7 +394,7 @@
 .custom-table-container table {
   border: 1px solid #000;
   border-collapse: collapse;
-  width: 90%;
+  width: 100%;
   height: 10px;
 }
 
@@ -398,4 +403,63 @@
   border: 1px solid #000;
   text-align: center;
   /* padding: 5px; */
+}
+
+
+
+.table-container {
+  display: table;
+  width: 100%;
+}
+
+.table-header {
+  display: table-row;
+  font-weight: bold;
+  background-color: #f1f1f1;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+  /* border-radius: 10px; */
+}
+
+.machine-id,
+.category,
+.sub-category {
+  position: relative;
+}
+
+.machine-id::before,
+.category::before,
+.sub-category::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+}
+
+/* .machine-id::before {
+  background-color: #db8282;
+}
+
+.category::before {
+  background-color: #cac264;
+}
+
+.sub-category::before {
+  background-color: #467e46;
+} */
+
+.andon-alert-button {
+  background-color: #db8282;
 }
