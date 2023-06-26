@@ -20,6 +20,16 @@ import { CategorywiseComponent } from './categorywise/categorywise.component';
 import { AnalysislineComponent } from './analysisline/analysisline.component';
 import { OeeanalysisComponent } from './oeeanalysis/oeeanalysis.component';
 import { Alert2Component } from './alert2/alert2.component';
+import { TodoComponent } from './todo/todo.component';
+import { AndonbreakdownComponent } from './andonbreakdown/andonbreakdown.component';
+import { MachineIdComponent } from './machine-id/machine-id.component';
+import { ProductIdComponent } from './product-id/product-id.component';
+import { BreakdowncategoryComponent } from './breakdowncategory/breakdowncategory.component';
+import { AssemblylineComponent } from './assemblyline/assemblyline.component';
+import { ShopfloorComponent } from './shopfloor/shopfloor.component';
+import { SubbreakdownComponent } from './subbreakdown/subbreakdown.component';
+import { SubassemblylineComponent } from './subassemblyline/subassemblyline.component';
+import { ProductreceipeComponent } from './productreceipe/productreceipe.component';
 
 
 const routes: Routes = [
@@ -38,11 +48,21 @@ const routes: Routes = [
 {path: 'andon2', component:Andon2Component},
 {path: 'andon3', component:Andon3Component},
 {path: 'alert', component: AlertComponent},
-{path: 'breakdown', component: BreakdownComponent},
+{path: 'bd', component: BreakdownComponent},
 {path: 'categorywise', component: CategorywiseComponent},
 {path: 'line', component: AnalysislineComponent},
 {path: 'oee', component: OeeanalysisComponent},
 {path: 'alert2', component: Alert2Component},
+{path: 'todo', component: TodoComponent},
+{path: 'andonb', component: AndonbreakdownComponent},
+{path: 'machine-id', component: MachineIdComponent},
+{path: 'product-id', component: ProductIdComponent},
+{path: 'bdc', component: BreakdowncategoryComponent},
+{path: 'assemblyline', component: AssemblylineComponent},
+{path: 'shopfloor', component: ShopfloorComponent},
+{path: 'sbdc', component: SubbreakdownComponent},
+{path: 'sal', component: SubassemblylineComponent},
+{path: 'pr', component: ProductreceipeComponent},
 ];
 
 @NgModule({

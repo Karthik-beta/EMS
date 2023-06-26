@@ -6,6 +6,11 @@
   border-radius: 10px;
   /* background-color: gainsboro; */
   background-color: rgb(106, 133, 160);
+  /* padding: 10px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  margin: 0.5em;
 }
 
 .dash-card .card-body {

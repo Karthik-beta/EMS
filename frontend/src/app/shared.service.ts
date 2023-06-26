@@ -135,6 +135,135 @@ readonly APIUrl = "http://127.0.0.1:8000/";
       return this.http.delete(this.APIUrl+'/andon/'+id);
     }
 
+    getMachineList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/machine/');
+    }
+
+    addMachine(val:any){
+      return this.http.post(this.APIUrl+'/machine/',val);
+    }
+
+    updateMachine(val:any){
+      return this.http.put(this.APIUrl+'/machine/',val);
+    }
+
+    deleteMachine(id: number){
+      return this.http.delete(this.APIUrl+'/machine/'+id);
+    }
+
+    getProductList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/product/');
+    }
+
+    addProduct(val:any){
+      return this.http.post(this.APIUrl+'/product/',val);
+    }
+
+    updateProduct(val:any){
+      return this.http.put(this.APIUrl+'/product/',val);
+    }
+
+    deleteProduct(id: number){
+      return this.http.delete(this.APIUrl+'/product/'+id);
+    }
+
+    getBreakdowncategoryList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/breakdownCategory/');
+    }
+
+    addBreakdowncategory(val:any){
+      return this.http.post(this.APIUrl+'/breakdownCategory/',val);
+    }
+
+    updateBreakdowncategory(val:any){
+      return this.http.put(this.APIUrl+'/breakdownCategory/',val);
+    }
+
+    deleteBreakdowncategory(id: number){
+      return this.http.delete(this.APIUrl+'/breakdownCategory/'+id);
+    }
+
+    getAssemblyLineList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/assemblyLine/');
+    }
+
+    addAssemblyLine(val:any){
+      return this.http.post(this.APIUrl+'/assemblyLine/',val);
+    }
+
+    updateAssemblyLine(val:any){
+      return this.http.put(this.APIUrl+'/assemblyLine/',val);
+    }
+
+    deleteAssemblyLine(id: number){
+      return this.http.delete(this.APIUrl+'/assemblyLine/'+id);
+    }
+
+    getShopFloorList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/shopFloor/');
+    }
+
+    addShopFloor(val:any){
+      return this.http.post(this.APIUrl+'/shopFloor/',val);
+    }
+
+    updateShopFloor(val:any){
+      return this.http.put(this.APIUrl+'/shopFloor/',val);
+    }
+
+    deleteShopFloor(id: number){
+      return this.http.delete(this.APIUrl+'/shopFloor/'+id);
+    }
+
+    getsubBreakdownCategoryList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/subBreakdownCategory/');
+    }
+
+    addsubBreakdownCategory(val:any){
+      return this.http.post(this.APIUrl+'/subBreakdownCategory/',val);
+    }
+
+    updatesubBreakdownCategory(val:any){
+      return this.http.put(this.APIUrl+'/subBreakdownCategory/',val);
+    }
+
+    deletesubBreakdownCategory(id: number){
+      return this.http.delete(this.APIUrl+'/subBreakdownCategory/'+id);
+    }
+
+    getsubAssemblyLineList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/subAssemblyLine/');
+    }
+
+    addsubAssemblyLine(val:any){
+      return this.http.post(this.APIUrl+'/subAssemblyLine/',val);
+    }
+
+    updatesubAssemblyLine(val:any){
+      return this.http.put(this.APIUrl+'/subAssemblyLine/',val);
+    }
+
+    deletesubAssemblyLine(id: number){
+      return this.http.delete(this.APIUrl+'/subAssemblyLine/'+id);
+    }
+
+    getProductreceipeList():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/productReceipe/');
+    }
+
+    addProductreceipe(val:any){
+      return this.http.post(this.APIUrl+'/productReceipe/',val);
+    }
+
+    updateProductreceipe(val:any){
+      return this.http.put(this.APIUrl+'/productReceipe/',val);
+    }
+
+    deleteProductreceipe(id: number){
+      return this.http.delete(this.APIUrl+'/productReceipe/'+id);
+    }
+
+
 
 
 
@@ -161,6 +290,40 @@ readonly APIUrl = "http://127.0.0.1:8000/";
     getAllAndonNames():Observable<any[]>{
       return this.http.get<any[]>(this.APIUrl+'/andon/');
     }
+
+    getAllMachineNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/machine/');
+    }
+
+    getAllProductNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/product/');
+    }
+
+    getAllBreakdowncategoryNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/breakdownCategory/');
+    }
+
+    getAllAssemblyLineNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/assemblyLine/');
+    }
+
+    getAllShopFloorNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/shopFloor/');
+    }
+
+    getAllsubBreakdownCategoryNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/subBreakdownCategory/');
+    }
+
+    getAllsubAssemblyLineNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/subAssemblyLine/');
+    }
+
+    getAllProductreceipeNames():Observable<any[]>{
+      return this.http.get<any[]>(this.APIUrl+'/productReceipe/');
+    }
+
+
 
 
 

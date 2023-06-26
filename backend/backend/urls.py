@@ -5,4 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('authApp.urls')),
     re_path(r'^', include('EmployeeApp.urls')),
+    re_path(r'^', include('andonApp.urls')),
 ]

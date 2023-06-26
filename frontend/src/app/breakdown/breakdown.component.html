@@ -14,6 +14,10 @@
       </li>
 
       <li class="nav-item">
+        <a routerLink="/andonb" class="nav-link">Andon Breakdown</a>
+      </li>
+
+      <li class="nav-item">
         <a routerLink="/alert" class="nav-link"><i class="fa-solid fa-bell"></i></a>
       </li>
     </ul>
@@ -31,7 +35,7 @@
 
 <div class="container-fluid">
   <div class="row justify-content-center">
-      <div class="col-md-2">
+      <div class="col-md-auto">
           <div class="dash-card shadow rounded">
               <div class="card-body">
                 <p style="font-weight: bolder;">Plant</p>
@@ -45,7 +49,7 @@
               </div>
           </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-auto">
           <div class="dash-card shadow rounded">
               <div class="card-body">
                 <p style="font-weight: bolder;">Shopfloor</p>
@@ -59,7 +63,35 @@
               </div>
           </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-auto">
+        <div class="dash-card shadow rounded">
+            <div class="card-body">
+              <p style="font-weight: bolder;">Assembly Line</p>
+              <div>
+                <select class="form-control custom-select" placeholder="Select Options">
+                  <option value="" disabled selected>- All -</option>
+                  <option>Line 1</option>
+                  <option>Line 2</option>
+                </select>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-auto">
+          <div class="dash-card shadow rounded">
+              <div class="card-body">
+                <p style="font-weight: bolder;">Machine</p>
+                <div>
+                  <select class="form-control custom-select" placeholder="Select Options">
+                    <option value="" disabled selected>- All -</option>
+                    <option>Machine 1</option>
+                    <option>Machine 2</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-auto">
           <div class="dash-card shadow rounded">
               <div class="card-body">
                 <p style="font-weight: bolder;">B D Category</p>
@@ -71,19 +103,7 @@
               </div>
           </div>
       </div>
-      <div class="col-md-2">
-          <div class="dash-card shadow rounded">
-              <div class="card-body">
-                <p style="font-weight: bolder;">Machine</p>
-                <select class="form-control custom-select" placeholder="Select Options">
-                  <option value="" disabled selected>- All -</option>
-                  <option>Machine 1</option>
-                  <option>Machine 2</option>
-                </select>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-auto">
           <div class="dash-card shadow rounded">
               <div class="card-body">
                 <p style="font-weight: bolder;">Open Alert</p>
@@ -91,7 +111,7 @@
               </div>
           </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-auto">
           <div class="dash-card shadow rounded">
               <div class="card-body">
                 <p style="font-weight: bolder;">Closed Alert</p>

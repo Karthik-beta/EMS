@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'authApp',
     'corsheaders',
-    'EmployeeApp.apps.EmployeeappConfig'
+    'EmployeeApp.apps.EmployeeappConfig',
+    'andonApp.apps.AndonappConfig',
 ]
 
 AUTH_USER_MODEL = 'authApp.User'

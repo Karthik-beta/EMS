@@ -43,6 +43,19 @@ import { CategorywiseComponent } from './categorywise/categorywise.component';
 import { AnalysislineComponent } from './analysisline/analysisline.component';
 import { OeeanalysisComponent } from './oeeanalysis/oeeanalysis.component';
 import { Alert2Component } from './alert2/alert2.component';
+import { TodoComponent } from './todo/todo.component';
+import { AndonbreakdownComponent } from './andonbreakdown/andonbreakdown.component';
+import { MachineIdComponent } from './machine-id/machine-id.component';
+import { AddEditMecComponent } from './machine-id/add-edit-mec/add-edit-mec.component';
+import { ProductIdComponent } from './product-id/product-id.component';
+import { AddEditProComponent } from './product-id/add-edit-pro/add-edit-pro.component';
+import { BreakdowncategoryComponent } from './breakdowncategory/breakdowncategory.component';
+import { AddEditBdcComponent } from './breakdowncategory/add-edit-bdc/add-edit-bdc.component';
+import { AssemblylineComponent } from './assemblyline/assemblyline.component';
+import { ShopfloorComponent } from './shopfloor/shopfloor.component';
+import { SubbreakdownComponent } from './subbreakdown/subbreakdown.component';
+import { SubassemblylineComponent } from './subassemblyline/subassemblyline.component';
+import { ProductreceipeComponent } from './productreceipe/productreceipe.component';
 
 
 @NgModule({
@@ -81,7 +94,20 @@ import { Alert2Component } from './alert2/alert2.component';
     CategorywiseComponent,
     AnalysislineComponent,
     OeeanalysisComponent,
-    Alert2Component
+    Alert2Component,
+    TodoComponent,
+    AndonbreakdownComponent,
+    MachineIdComponent,
+    AddEditMecComponent,
+    ProductIdComponent,
+    AddEditProComponent,
+    BreakdowncategoryComponent,
+    AddEditBdcComponent,
+    AssemblylineComponent,
+    ShopfloorComponent,
+    SubbreakdownComponent,
+    SubassemblylineComponent,
+    ProductreceipeComponent
   ],
   imports: [
     BrowserModule,

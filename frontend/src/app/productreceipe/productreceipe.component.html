@@ -1,0 +1,81 @@
+<app-nav></app-nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ ModalTitle }}</h5>
+        <button type="button" class="close"
+        data-dismiss="modal" aria-label="Close"
+        (click)="closeClick()" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <!-- <app-add-edit-pro [pro]="pro" *ngIf="ActivateAddEditProComp">
+        </app-add-edit-pro> -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="search-bar mt-2">
+  <div class="d-flex align-items-center">
+    <button class="btn btn-secondary back-button-container">Back</button>
+    <input [(ngModel)]="searchText" class="form-control" (keyup)="filterData()" placeholder="Search">
+    <button type="button" class="btn btn-primary button-container"
+    data-toggle="modal" data-target="#exampleModal"
+    (click)="addClick()"
+    data-backdrop="static" data-keyboard="false">ADD</button>
+  </div>
+</div>
+<table class="table ">
+  <thead>
+    <tr>
+      <th>PRODUCT ID</th>
+      <th>STAGES</th>
+      <th>TARGET / UNIT</th>
+      <th>TARGET / MINUTE</th>
+      <th>TARGET / HOUR</th>
+      <th>SKILL MATRIX</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dataItem of productreceipeList; let i = index">
+      <ng-container *ngIf="i % 2 === 0">
+        <td rowspan="2">{{ dataItem.productId }}</td>
+      </ng-container>
+      <td>{{ dataItem.stage1 }}</td>
+      <td>{{ dataItem.target_time1 }}</td>
+      <td>{{ dataItem.target_per_minute1 }} </td>
+      <td>{{ dataItem.target_per_hour1 }} </td>
+      <td>{{ dataItem.skill_matrix1 }}</td>
+      <td><button type="button" class="btn btn-light mr-1"
+        data-toggle="modal" data-target="#exampleModal"
+        (click)="editClick(dataItem)"
+        data-backdrop="static" data-keyboard="false"
+        >
+        <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+        <button type="button" class="btn btn-danger mr-1"
+                (click)="deleteClick(dataItem.productId)"
+                data-backdrop="static" data-keyboard="false"
+                >
+                <i class="fa-solid fa-trash"></i>
+                </button>
+      </td>
+    </tr>
+    <tr *ngFor="let dataItem of productreceipeList">
+      <td>{{ dataItem.stage2 }}</td>
+      <td>{{ dataItem.target_time2 }} </td>
+      <td>{{ dataItem.target_per_minute2 }} </td>
+      <td>{{ dataItem.target_per_hour2 }} </td>
+      <td>{{ dataItem.skill_matrix2 }}</td>
+    </tr>
+  </tbody>
+</table>

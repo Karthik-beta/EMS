@@ -1,0 +1,82 @@
+<app-nav></app-nav>
+
+<div class="container mt-5" style="width: 95%;">
+  <div class="table-container">
+    <div class="button-container">
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary"
+data-toggle="modal" data-target="#exampleModal"
+(click)="addClick()"
+data-backdrop="static" data-keyboard="false"
+>
+    Add Breakdown Category
+  </button>
+  </div>
+
+  <div class="back-button-container">
+    <button type="button" class="btn btn-primary" data-backdrop="static" data-keyboard="false">Back</button>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ ModalTitle }}</h5>
+          <button type="button" class="close"
+          data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <!-- <app-add-edit-pro [pro]="pro" *ngIf="ActivateAddEditProComp">
+          </app-add-edit-pro> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<div class="search-bar">
+    <input [(ngModel)]="searchText" class="form-control"
+(keyup)="filterData()" placeholder="Search">
+</div>
+<table class="table table-striped table-hover table-full-width">
+  <thead>
+      <tr>
+          <th>#</th>
+          <th>Breakdown Category</th>
+          <th>Options</th>
+          <!-- Add more header columns if needed -->
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let dataItem of BreakdownCategoryList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ dataItem.breakdownCategoryId }}</td>
+          <td>{{ dataItem.breakdownCategoryName }}</td>
+          <td>
+            <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#exampleModal"
+                (click)="editClick(dataItem)"
+                data-backdrop="static" data-keyboard="false"
+                >
+            <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button type="button" class="btn btn-danger mr-1"
+                (click)="deleteClick(dataItem.breakdownCategoryId)"
+                data-backdrop="static" data-keyboard="false"
+                >
+                <i class="fa-solid fa-trash"></i>
+                </button>
+          </td>
+      </tr>
+  </tbody>
+</table>
